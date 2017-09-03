@@ -1,0 +1,41 @@
+Problem statement:
+define goal
+define state and operators
+find solution
+
+
+goal => place p lizards on n*n board
+
+state => state of board
+operators => place a lizard on position (i,j), remove a lizard from a position (i, j)
+
+check goal => if p lizards placed on board properly
+
+
+state is a representation, which is independent, doesn't have parent, child etc
+node is a data structure representing a part of a search tree. includes parent, children, depth, cost
+
+
+prove the following for the algo that you come up with
+completeness
+time complexity
+space complexity
+optimal solution
+
+
+pseudo code:
+
+functions:
+issafe(state):Boolean
+addLiz(state, position):Boolean
+isgoal(liz): Boolean
+removeLiz(liz): Boolean
+
+
+Function General-Search(problem, Queuing-Fn) returns a solution, or failure
+	nodes = make-queue(make-node(initial-state[problem]))
+	loop do
+		if nodes is empty then return failure
+		node = Remove-Front(nodes)
+		if Goal-Test[problem] applied to State(node) succeeds then return node
+		nodes = Queuing-Fn(nodes, Expand(node, Operators[problem])
