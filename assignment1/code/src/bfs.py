@@ -1,16 +1,12 @@
 from core import *
 from reader import *
-import copy
-
-def printQ(q):
-	for i in q:
-		print(i.liz_count)
-		print(i.liz_pos)
-
+from collections import deque
 
 def algo(n, p):
-	Q = []
-	initial_state = Board(p, [], n)
+	Q = deque()
+	# Q = []
+	# initial_state = Board(p, [], n)
+	initial_state = (p, [], 0)  # num of liz, state, depth
 	Q.append(initial_state)
 	goal = None
 	while True:
@@ -19,35 +15,25 @@ def algo(n, p):
 			goal = False
 			break
 		
-		# printQ(Q)
-		node = Q.pop(0)
-		print("iteration : %d , size of Q is %d " % (node.depth, len(Q)))
-		# print("iteration %d" % (node.depth+1))
+		# cur_liz, cur_state, cur_depth = Q.pop(0)
+		cur_liz, cur_state, cur_depth = Q.popleft()
 
-		# can be possible that there is no lizard possible at current depth
-		bck_node = copy.deepcopy(node)
-		bck_node.depth += 1
-		if bck_node.depth < n:
-			Q.append(bck_node)
+		if cur_depth+1 < n:
+			Q.append((cur_liz, cur_state, cur_depth+1))
 		
 
 		# print("n size %d" % (n))
 		for col in range(0, n):
 			# print((node.depth, i))
-			newstate = addLizard(node.liz_pos, (node.depth, col))
+			newstate = addLizard(cur_state, (cur_depth, col))
 			# print(col)
 			if issafe(newstate):
-				if node.liz_count == 1:
+				if cur_liz == 1:
 					goal = newstate
 					break
 				else:
-					new_node = copy.deepcopy(node)
-					new_node.liz_count = node.liz_count - 1
-					new_node.liz_pos = newstate
-					new_node.depth = node.depth + 1
-					new_node.size = node.size
-					if new_node.depth < n:
-						Q.append(new_node)
+					if cur_depth+1 < n:
+						Q.append((cur_liz-1, newstate, cur_depth+1))
 		if goal is not None:
 			break
 	return goal
@@ -58,7 +44,7 @@ def main():
 	print(result)
 
 
-# print(issafe([(0,0), (1,2)]))
-# print(check_liz_eat((0,0), (1,2)))
-
+import time
+t1 = time.time()
 main()
+print(time.time() - t1)

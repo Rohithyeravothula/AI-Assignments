@@ -33,20 +33,25 @@ def check_liz_eat(pos1, pos2, trees = []):
 	return True
 
 
-# time complexity is o(n**2)
+# time complexity is o(n)
 def issafe(state):
 	l = len(state)
-	for i in range(0, l):
-		for j in range(0, i):
-			if not check_liz_eat(state[i], state[j]):
-				return False
+	new_liz = state[-1]
+	for i in range(0, l-1):
+		if not check_liz_eat(state[i], new_liz):
+			return False
 	return True
 
 
+def printQ(q):
+	for i in q:
+		print(i[0])
+		print(i[1])
 
-class Board(object):
-	def __init__(self, liz_count, liz_pos, size):
-		self.liz_count = liz_count
-		self.liz_pos = liz_pos
-		self.size = size # remove as it is not used anywhere 
-		self.depth = 0
+
+# class Board(object):
+# 	def __init__(self, liz_count, liz_pos, size):
+# 		self.liz_count = liz_count
+# 		self.liz_pos = liz_pos
+# 		self.size = size # remove as it is not used anywhere 
+# 		self.depth = 0
