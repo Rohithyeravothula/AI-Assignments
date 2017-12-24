@@ -1,7 +1,10 @@
 */bin/*
+.*
+*/.idea
 __pycache__
 */include/*
 */lib/*
 */pip-selfcheck.json
 *.pyc
 *.pyo
+*/.env
