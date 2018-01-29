@@ -1,0 +1,36 @@
+check first row and first column, if greater then the current output, then we can use them, since there is no affect on board, after we choose ?
+no since our algo already considered this possibility, I think this might lead to suboptimal solution
+
+
+
+few loosing boards ? 
+
+
+
+in case of huge boards, components far away from decision are effecting our decision. which should not happend 
+connected components at postition 10, 10 affecting at 1,1 for score of say 9
+
+a random move generator in case of time being very less
+
+relatively more number of moves and more time taken for depth d in case of more number of fruits
+
+is it ok to collect greedily in the beginning ? may signal using time and num of fruits 
+
+change getChildren threshold to nubmer of fruit slots instead of board size
+
+branching factor is not changing much with the fruit counts, 2,9 fruit counts give me same branching factor
+but the fruit counts will give the number of turns it takes to finish the game
+
+
+
+Things to do:
+sort and see performance 
+rules make them little more tight
+
+
+test for randome node returning (done)
+test for small times (done)
+test for time not calibrated (done)
+include time in calibrate (done, removed long time taking candidates aka depth 4 for input size > 20)
+fresh check for calibrate 
+submit

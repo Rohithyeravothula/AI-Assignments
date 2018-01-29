@@ -1,0 +1,7 @@
+board: 15 fruits: 3 time: 7.170680292
+board: 7 fruits: 3 time: 8.544110786
+board: 2 fruits: 8 time: 9.094922108
+board: 17 fruits: 7 time: 76.218462785
+board:  fruits:  time: .014855906
+board:  fruits:  time: 5.043761333
+board:  fruits:  time: 4.846352227
